@@ -1,0 +1,42 @@
+<html>
+<head>
+<script src="jquery-1.7.2.min.js"></script>
+<script src="json2.min.js"></script>
+<script src="../src/jquery-serialize-inputs.js"></script>
+</head>
+<body>
+<div id="inputs">
+<ul>
+<li>string <input type="text" name="string" value="string" /></li>
+<li>number <input type="text" name="number" value="123" /></li>
+<li>true <input type="text" name="true" value="true" /></li>
+<li>false <input type="text" name="false" value="false" /></li>
+<li>null <input type="text" name="null" value="null" /></li>
+<li>number in string <input type="text" name="number-in-string" class="string" value="123" /></li>
+<li>true in string <input type="text" name="true-in-string" class="string" value="true" /></li>
+<li>false in string <input type="text" name="false-in-string" class="string" value="false" /></li>
+<li>null in string <input type="text" name="null-in-string" class="string" value="null" /></li>
+<li>invalid number <input type="text" name="invalid-number" class="number" value="invalid number" /></li>
+<li>ignored unnamed input <input type="text" value="ignored" /></li>
+<li>radio <input type="radio" label="string" name="radio" value="string" />string, <input type="radio" name="radio" checked="true" value="123" />number</li>
+<li>checkbox <input type="checkbox" checked="true" name="checkbox" value="string" /></li>
+<li>select <select name="select">
+	<option value="string">string</option>
+	<option value="123">123</option>
+	<option value="true">true</option>
+	<option value="false">false</option>
+	<option value="null">null</option>
+</select></li>
+<ul>
+</div>
+<p id="result"></p>
+<script>
+$(function(){
+  $(":input").change(function() {
+    var foo = $("#inputs").serializeInputs();
+    $("#result").text(JSON.stringify(foo));
+  }).change();
+});
+</script>
+</body>
+</html>
